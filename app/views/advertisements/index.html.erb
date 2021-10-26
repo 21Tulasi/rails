@@ -1,0 +1,29 @@
+
+
+ <h1>Advertisements</h1>
+  <div class="container">
+      <div class="row">
+        <% @advertisements.each do |advertisement| %>
+            <div class="col pb-5">
+              <div class="card" style="width: 18rem;">
+                  <img src="<%= advertisement.imageUrl %>" class="card-img-top" alt="..." height="250px">
+                  <div class="card-body">
+                      <h5 class="card-title"><%= advertisement.username %></h5>
+                      <p class="card-text"><%= advertisement.cation %></p>
+                      <%= link_to 'Show', advertisement,class:"btn btn-secondary" %>
+                      <% if current_user == advertisement.user%>
+                      <%= link_to 'Delete', advertisement, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-secondary" %>
+                      <%= link_to 'Edit', edit_advertisement_path(advertisement),class:"btn btn-secondary" %>
+                      <%end%>
+                  </div>
+              </div>
+            </div>
+        <% end %>
+      </div>
+</div>
+ 
+
+<br>
+<% if user_signed_in? %>
+<%= link_to 'Create Advertisement', new_advertisement_path,class:"btn btn-secondary" %>
+<%end%>

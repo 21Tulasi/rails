@@ -1,0 +1,19 @@
+
+
+<div class="container">
+      <div class="row">
+        <div class="col pb-5">
+              <div class="card" style="width: 18rem;">
+                  <img src="<%= @advertisement.imageUrl %>" class="card-img-top" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title"><%= @advertisement.username %></h5>
+                      <p class="card-text"><%= @advertisement.cation %></p>
+                      <% if current_user == @advertisement.user%>
+                      <%= link_to 'Edit Ad', edit_advertisement_path(@advertisement),class:"btn btn-secondary" %>
+                      <%end%>
+                      <%= link_to 'Back', advertisements_path,class:"btn btn-secondary" %>
+                  </div>
+              </div>
+          </div>
+      </div>
+</div>
